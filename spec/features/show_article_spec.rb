@@ -2,9 +2,17 @@ require "rails_helper"
 
 RSpec.feature "Showing an article" do
   before do
+    john = User.create(
+      email: "john@example.com",
+      password: "password"
+    )
+
+    login_as(john)
+
     @article = Article.create(
-      title: "The first article",
-      body: "Lorem ipsum dolor sit amet, consectetur."
+      title: "Title One",
+      body: "Body of article one",
+      user: john
     )
   end
 
